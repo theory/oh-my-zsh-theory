@@ -1,7 +1,7 @@
 # In ~/.zshrc:
 # ZSH_CUSTOM=$HOME/dev/misc/oh-my-zsh-theory
 
-export PATH=$HOME/.plenv/shims:$HOME/.plenv/bin:$HOME/.cargo/bin:$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Developer/Tools
+export PATH=$HOME/.plenv/shims:$HOME/.plenv/bin:$HOME/.cargo/bin:$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Developer/Tools
 export GPG_TTY=$(tty)
 
 # Move git-path prompt to the left.
