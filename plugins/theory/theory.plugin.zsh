@@ -6,9 +6,7 @@ brew=/opt/homebrew
 [ ! -d "$brew" ] && [ -d /usr/local/Homebrew ] && brew=/usr/local
 
 paths=(
-    $HOME/.plenv/shims:
-    $HOME/.plenv/bin
-    $HOME/.cargo/bin
+    $HOME/go/bin
     $HOME/.pgenv/bin
     $HOME/.pgenv/pgsql/bin
     $HOME/bin
@@ -21,6 +19,12 @@ paths=(
 
 export PATH=$(IFS=:; printf '%s' "${paths[*]}")
 export GPG_TTY=$(tty)
+export EDITOR="emacs"
+export PGTZ=UTC
+
+# less stuff.
+PAGER=less
+LESS="-iqRIMSx4 -FX"
 
 # Move git-path prompt to the left.
 RPROMPT=""
@@ -33,6 +37,9 @@ bindkey "^[l" down-case-word
 [ -f "$HOME/.plenv/bin/plenv" ] && eval "$($HOME/.plenv/bin/plenv init - zsh)"
 function pmv () { perl -M$1 -le "print $1->VERSION"; }
 function pmr () { perl -MModule::CoreList -le "print Module::CoreList->first_release(q{$1})"; }
+
+# Rust stuff.
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # Homebrew stuff
 gettext_init() { export PATH=/usr/local/opt/gettext/bin:$PATH }
