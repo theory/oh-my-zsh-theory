@@ -1,7 +1,25 @@
 # In ~/.zshrc:
 # ZSH_CUSTOM=$HOME/dev/misc/oh-my-zsh-theory
 
-export PATH=$HOME/.plenv/shims:$HOME/.plenv/bin:$HOME/.cargo/bin:$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$HOME/bin:/usr/local/opt/python/libexec/bin:/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Developer/Tools
+# Customize PATH.
+brew=/opt/homebrew
+[ ! -d "$brew" ] && [ -d /usr/local/Homebrew ] && brew=/usr/local
+
+paths=(
+    $HOME/.plenv/shims:
+    $HOME/.plenv/bin
+    $HOME/.cargo/bin
+    $HOME/.pgenv/bin
+    $HOME/.pgenv/pgsql/bin
+    $HOME/bin
+    $brew/opt/python/libexec/bin
+    $brew/opt/ruby/bin
+    $brew/bin
+    $PATH
+    /Developer/Tools
+)
+
+export PATH=$(IFS=:; printf '%s' "${paths[*]}")
 export GPG_TTY=$(tty)
 
 # Move git-path prompt to the left.
@@ -12,7 +30,7 @@ git_prompt_info() { git_super_status }
 bindkey "^[l" down-case-word
 
 # Perl stuff
-eval "$(plenv init - zsh)"
+[ -f "$HOME/.plenv/bin/plenv" ] && eval "$($HOME/.plenv/bin/plenv init - zsh)"
 function pmv () { perl -M$1 -le "print $1->VERSION"; }
 function pmr () { perl -MModule::CoreList -le "print Module::CoreList->first_release(q{$1})"; }
 
