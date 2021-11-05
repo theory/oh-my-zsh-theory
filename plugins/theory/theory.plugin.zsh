@@ -6,6 +6,7 @@ brew=/opt/homebrew
 [ ! -d "$brew" ] && [ -d /usr/local/Homebrew ] && brew=/usr/local
 
 paths=(
+    $HOME/.plenv/bin
     $HOME/go/bin
     $HOME/.pgenv/bin
     $HOME/.pgenv/pgsql/bin
