@@ -43,8 +43,16 @@ function pmr () { perl -MModule::CoreList -le "print Module::CoreList->first_rel
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # Homebrew stuff
-gettext_init() { export PATH=/usr/local/opt/gettext/bin:$PATH }
-ssl_init()     { export PATH=/usr/local/opt/openssl/bin:$PATH }
+gettext_init() {
+    export PATH=$brew/opt/gettext/bin:$PATH
+}
+ssl_init() {
+    v=@v1 # @v1, @v3, or empty for latest
+    export PATH=$brew/opt/openssl$v/bin:$PATH
+    export OPENSSL_PREFIX=$brew/opt/openssl$v
+    export LDFLAGS=-L$brew/opt/openssl$v/lib
+    export CPPFLAGS=-I$brew/opt/openss$v/include
+}
 
 # Handy aliases
 alias ts="date -u '+%Y-%m-%dT%H:%M:%SZ'"
