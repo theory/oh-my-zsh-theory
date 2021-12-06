@@ -65,3 +65,4 @@ alias up3="cd ../../.."
 alias up4="cd ../../../.."
 alias up5="cd ../../../../.."
 alias ip="ifconfig | grep inet | grep netmask"
+alias k=kubectl
