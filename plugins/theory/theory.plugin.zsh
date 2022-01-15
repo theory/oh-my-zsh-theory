@@ -47,7 +47,7 @@ gettext_init() {
     export PATH=$brew/opt/gettext/bin:$PATH
 }
 ssl_init() {
-    v=@v1 # @v1, @v3, or empty for latest
+    v=$1 # @1.1, @3, or empty for latest
     export PATH=$brew/opt/openssl$v/bin:$PATH
     export OPENSSL_PREFIX=$brew/opt/openssl$v
     export LDFLAGS=-L$brew/opt/openssl$v/lib
