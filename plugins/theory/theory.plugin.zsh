@@ -54,6 +54,12 @@ ssl_init() {
     export CPPFLAGS=-I$brew/opt/openss$v/include
 }
 
+# Xcode stuff
+xcode-reinstall() {
+    sudo rm -rf $(xcode-select -p)
+    xcode-select --install
+}
+
 # Handy aliases
 alias ts="date -u '+%Y-%m-%dT%H:%M:%SZ'"
 alias timestamp="ts | tr -d '\n' | pbcopy"
