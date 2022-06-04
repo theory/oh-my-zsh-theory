@@ -1,0 +1,101 @@
+#compdef sqitch
+#autoload
+
+_sqitch () {
+  local context state state_descr line
+  typeset -A opt_args
+
+  _arguments -C \
+    "-h[Show help]" \
+    "--help[Show help]" \
+    "--man[Show help]" \
+    "--etc-path[Set etc]" \
+    "--version[Show version]" \
+    "-t[database to which to connect]:target:_targets" \
+    "--target[database to which to connect]:target:_targets" \
+    "1:sqitch commands:_sqitch_commands"  \
+    "*::arguments:->args" && ret=0
+
+  case $state in
+    args)                       # from ->args
+      _sqitch_complete_command_args $line[1]
+      ;;
+  esac
+
+}
+
+_sqitch_commands() {
+    local -a subcommands
+    subcommands=(
+      "add:Add a new change to the plan"
+      "bundle:Bundle a Sqitch project for distribution"
+      "checkout:Revert, checkout another VCS branch, and re-deploy changes"
+      "config:Get and set local, user, or system options"
+      "deploy:Deploy changes to a database"
+      "engine:Manage database engine configuration"
+      "help:Display help information about Sqitch commands"
+      "init:Initialize a project"
+      "log:Show change logs for a database"
+      "plan:Show the contents of a plan"
+      "rebase:Revert and redeploy database changes"
+      "revert:Revert changes from a database"
+      "rework:Duplicate a change in the plan and revise its scripts"
+      "show:Show information about changes and tags, or change script contents"
+      "status:Show the current deployment status of a database"
+      "tag:Add or list tags in the plan"
+      "target:Manage target database configuration"
+      "upgrade:Upgrade the registry to the current version"
+      "verify:Verify changes to a database"
+    )
+    _describe -t commands 'sqitch' subcommands
+}
+
+_sqitch_complete_command_args() {
+  local cmd="$1"
+
+  # Run the completion for the subcommand
+  case "${cmd}" in
+    verify)
+      _arguments : \
+        "-t[database to which to connect]:target:_targets" \
+        "--target[database to which to connect]:target:_targets"
+      _sqitch_complete_entries
+      ;;
+    revert)
+      _arguments : \
+        "-t[database to which to connect]:target:_targets" \
+        "--target[database to which to connect]:target:_targets"
+      _sqitch_complete_entries
+      ;;
+    add)
+      _sqitch_complete_entries
+      ;;
+    deploy)
+      _arguments : \
+        "-t[database to which to connect]:target:_targets" \
+        "--target[database to which to connect]:target:_targets"
+      _sqitch_complete_entries
+      ;;
+    status)
+      _arguments : \
+        "-t[database to connect]:target:_targets" \
+        "--target[database to which to connect]:target:_targets" \
+        "--show-changes[include a list of deployed changes]"
+      _sqitch_complete_entries
+      ;;
+  esac
+}
+
+_sqitch_complete_entries() {
+  local IFS=$'\n'
+  local prefix
+  prefix="./deploy"
+  _values -C 'change' ${$(find -L "$prefix" -type f -print 2>/dev/null | sed -e "s#${prefix}/\{0,1\}##" -e 's#\.sql##' -e 's#\\#\\\\#' | sort):-""}
+}
+
+_targets() {
+  local IFS=$'\n'
+  _values 'target' ${$(perl -nE'm{^\[target "([^"]+)"} && say $1' sqitch.conf | sort):-""}
+}
+
+_sqitch
