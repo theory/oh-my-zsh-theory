@@ -14,6 +14,7 @@ paths=(
     $brew/opt/python/libexec/bin
     $brew/opt/ruby/bin
     $brew/bin
+    $brew/sbin
     $PATH
     /Developer/Tools
 )
