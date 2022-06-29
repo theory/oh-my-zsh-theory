@@ -15,6 +15,7 @@ paths=(
     $brew/opt/ruby/bin
     $brew/bin
     $brew/sbin
+    $brew/opt/sqlite/bin
     $PATH
     /Developer/Tools
 )
