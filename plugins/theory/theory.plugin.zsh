@@ -11,6 +11,7 @@ paths=(
     $HOME/.pgenv/bin
     $HOME/.pgenv/pgsql/bin
     $HOME/bin
+    $HOME/.krew/bin
     $brew/opt/python/libexec/bin
     $brew/opt/ruby/bin
     $brew/bin
