@@ -76,3 +76,4 @@ alias up5="cd ../../../../.."
 alias ip="ifconfig | grep inet | grep netmask"
 alias k=kubectl
 alias damd="docker buildx build --platform=linux/amd64"
+alias cdr='cd $(git rev-parse --show-toplevel)'
