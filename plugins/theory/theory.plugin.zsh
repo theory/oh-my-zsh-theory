@@ -26,13 +26,16 @@ export GPG_TTY=$(tty)
 export EDITOR="emacs"
 export PGTZ=UTC
 
+# Start the starshp prompt.
+eval "$(starship init zsh)"
+
 # less stuff.
 PAGER=less
 LESS="-iqRIMSx4 -FX"
 
-# Move git-path prompt to the left.
-RPROMPT=""
-git_prompt_info() { git_super_status }
+# Move git-path prompt to the left. (disabled in favor of starship)
+# RPROMPT=""
+# git_prompt_info() { git_super_status }
 
 # Restore down-casing to option-l:
 bindkey "^[l" down-case-word
