@@ -26,7 +26,7 @@ export GPG_TTY=$(tty)
 export EDITOR="emacs"
 export PGTZ=UTC
 
-# Start the starshp prompt.
+# Start the starship prompt.
 eval "$(starship init zsh)"
 
 # less stuff.
