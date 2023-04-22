@@ -23,7 +23,7 @@ paths=(
 
 export PATH=$(IFS=:; printf '%s' "${paths[*]}")
 export GPG_TTY=$(tty)
-export EDITOR="emacs"
+export EDITOR="code -w"
 export PGTZ=UTC
 
 # Start the starship prompt.
