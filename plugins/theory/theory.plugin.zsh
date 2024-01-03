@@ -12,6 +12,7 @@ paths=(
     $HOME/.pgenv/pgsql/bin
     $HOME/bin
     $HOME/.krew/bin
+    $HOME/.gvm/bin
     $HOME/.pyenv/shims
     $brew/opt/python/libexec/bin
     $brew/opt/ruby/bin
@@ -66,6 +67,10 @@ xcode-reinstall() {
     sudo rm -rf $(xcode-select -p)
     xcode-select --install
 }
+
+# Go/GVM stuff
+# env GVM_NO_UPDATE_PROFILE=1 zsh < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # Handy aliases
 alias ts="date -u '+%Y-%m-%dT%H:%M:%SZ'"
