@@ -33,6 +33,9 @@ export PGTZ=UTC
 # Start the starship prompt.
 eval "$(starship init zsh)"
 
+# Start direnv.
+eval "$(direnv hook zsh)"
+
 # less stuff.
 PAGER=less
 LESS="-iqRIMSx4 -FX"
