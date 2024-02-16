@@ -52,6 +52,11 @@ bindkey "^[l" down-case-word
 function pmv () { perl -M$1 -le "print $1->VERSION"; }
 function pmr () { perl -MModule::CoreList -le "print Module::CoreList->first_release(q{$1})"; }
 
+function cpanm () {
+    # Point MakeMaker and Module:Build and Homewbrew include.
+    env PERL_MM_OPT="INC=-I$brew/include" PERL_MB_OPT="--include_dirs=$brew/include" command cpanm "$@"
+}
+
 # Rust stuff.
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
