@@ -64,13 +64,13 @@ function cpanm () {
 gettext_init() {
     export PATH=$brew/opt/gettext/bin:$PATH
 }
-ssl_init() {
-    v=$1 # @1.1, @3, or empty for latest
-    export PATH=$brew/opt/openssl$v/bin:$PATH
-    export OPENSSL_PREFIX=$brew/opt/openssl$v
-    export LDFLAGS=-L$brew/opt/openssl$v/lib
-    export CPPFLAGS=-I$brew/opt/openss$v/include
-}
+# ssl_init() {
+#     v=$1 # @1.1, @3, or empty for latest
+#     export PATH=$brew/opt/openssl$v/bin:$PATH
+#     export OPENSSL_PREFIX=$brew/opt/openssl$v
+#     export LDFLAGS=-L$brew/opt/openssl$v/lib
+#     export CPPFLAGS=-I$brew/opt/openss$v/include
+# }
 
 # Xcode stuff
 xcode-reinstall() {
