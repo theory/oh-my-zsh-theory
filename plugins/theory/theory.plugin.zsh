@@ -6,27 +6,28 @@ brew=/opt/homebrew
 [ ! -d "$brew" ] && [ -d /usr/local/Homebrew ] && brew=/usr/local
 
 paths=(
-    $HOME/.plenv/bin
-    $HOME/go/bin
-    $HOME/.pgenv/bin
-    $HOME/.pgenv/pgsql/bin
-    $HOME/bin
-    $HOME/.krew/bin
-    $HOME/.gvm/bin
-    $HOME/.pyenv/shims
-    $brew/opt/python/libexec/bin
-    $brew/opt/ruby/bin
-    $brew/bin
-    $brew/sbin
-    $brew/opt/sqlite/bin
+    "$HOME/.plenv/bin"
+    "$HOME/go/bin"
+    "$HOME/.pgenv/bin"
+    "$HOME/.pgenv/pgsql/bin"
+    "$HOME/bin"
+    "$HOME/.krew/bin"
+    "$HOME/.gvm/bin"
+    "$HOME/.pyenv/shims"
+    "$brew/opt/python/libexec/bin"
+    "$brew/opt/ruby/bin"
+    "$brew/bin"
+    "$brew/sbin"
+    "$brew/opt/sqlite/bin"
     "$("$brew/bin/brew" --prefix libpq)/bin"        # must come after pgenv and $brew/bin
     "$("$brew/bin/brew" --prefix mysql-client)/bin" # must come after $brew/bin
-    $PATH
+    "$PATH"
     /Developer/Tools
 )
 
-export PATH=$(IFS=:; printf '%s' "${paths[*]}")
-export GPG_TTY=$(tty)
+PATH=$(IFS=:; printf '%s' "${paths[*]}")
+GPG_TTY=$(tty)
+export PATH GPG_TTY
 export EDITOR="code -w"
 export PGTZ=UTC
 
@@ -37,8 +38,8 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
 # less stuff.
-PAGER=less
-LESS="-iqRIMSx4 -FX"
+export PAGER=less
+export LESS="-iqRIMSx4 -FX"
 
 # Move git-path prompt to the left. (disabled in favor of starship)
 # RPROMPT=""
@@ -58,6 +59,7 @@ function cpanm () {
 }
 
 # Rust stuff.
+# shellcheck source=/dev/null
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # Homebrew stuff
@@ -74,12 +76,14 @@ gettext_init() {
 
 # Xcode stuff
 xcode-reinstall() {
-    sudo rm -rf $(xcode-select -p)
+    sudo rm -rf "$(xcode-select -p)"
     xcode-select --install
 }
 
 # Go/GVM stuff
-# env GVM_NO_UPDATE_PROFILE=1 zsh < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 
+# env GVM_NO_UPDATE_PROFILE=1 zsh < <(curl -s -S -L
+# https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 
+# shellcheck source=/dev/null
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # Handy aliases
