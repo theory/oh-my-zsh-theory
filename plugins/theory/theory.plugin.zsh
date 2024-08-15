@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148
 # In ~/.zshrc:
 # ZSH_CUSTOM=$HOME/dev/misc/oh-my-zsh-theory
 
