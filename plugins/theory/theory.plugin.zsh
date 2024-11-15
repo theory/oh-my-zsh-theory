@@ -20,6 +20,7 @@ paths=(
     "$brew/bin"
     "$brew/sbin"
     "$brew/opt/sqlite/bin"
+    "$brew/opt/llvm/bin"
     "$("$brew/bin/brew" --prefix libpq)/bin"        # must come after pgenv and $brew/bin
     "$("$brew/bin/brew" --prefix mysql-client)/bin" # must come after $brew/bin
     "$PATH"
