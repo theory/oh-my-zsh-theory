@@ -12,6 +12,7 @@ paths=(
     "$HOME/.pgenv/bin"
     "$HOME/.pgenv/pgsql/bin"
     "$HOME/bin"
+    "$HOME/.local/bin" # tembo
     "$HOME/.krew/bin"
     "$HOME/.gvm/bin"
     "$HOME/.pyenv/shims"
@@ -32,6 +33,9 @@ GPG_TTY=$(tty)
 export PATH GPG_TTY
 export EDITOR="code -w"
 export PGTZ=UTC
+
+# Tembo stuff.
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/.config/gcloud/application_default_credentials.json"
 
 # Start the starship prompt.
 eval "$(starship init zsh)"
