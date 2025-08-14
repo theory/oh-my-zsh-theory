@@ -14,7 +14,7 @@ paths=(
     "$HOME/bin"
     "$HOME/.local/bin" # tembo
     "$HOME/.krew/bin"
-    "$HOME/.gvm/bin"
+    "$HOME/.goenv/bin"
     "$HOME/.pyenv/shims"
     "$brew/opt/python/libexec/bin"
     "$brew/opt/ruby/bin"
@@ -86,7 +86,10 @@ xcode-reinstall() {
     xcode-select --install
 }
 
-# Go/GVM stuff
+# Go stuff.
+export GOENV_ROOT="$HOME/.goenv"
+eval "$(goenv init -)"
+
 # env GVM_NO_UPDATE_PROFILE=1 zsh < <(curl -s -S -L
 # https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 
 # shellcheck source=/dev/null
