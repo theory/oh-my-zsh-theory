@@ -6,7 +6,7 @@
 brew=/opt/homebrew
 [ ! -d "$brew" ] && [ -d /usr/local/Homebrew ] && brew=/usr/local
 
-paths=(
+path=(
     "$HOME/.plenv/bin"
     "$HOME/go/bin"
     "$HOME/.pgenv/bin"
@@ -24,11 +24,10 @@ paths=(
     "$brew/opt/llvm/bin"
     "$("$brew/bin/brew" --prefix libpq)/bin"        # must come after pgenv and $brew/bin
     "$("$brew/bin/brew" --prefix mysql-client)/bin" # must come after $brew/bin
-    "$PATH"
+    "${path[@]}"
     /Developer/Tools
 )
 
-PATH=$(IFS=:; printf '%s' "${paths[*]}")
 GPG_TTY=$(tty)
 export PATH GPG_TTY
 export EDITOR="code -w"
