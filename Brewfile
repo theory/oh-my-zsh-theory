@@ -1,4 +1,5 @@
 brew "ansible"
+brew "atuin"
 brew "aspell"
 brew "atmos"
 brew "awscli"

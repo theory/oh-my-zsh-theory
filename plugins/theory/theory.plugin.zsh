@@ -34,14 +34,18 @@ export PATH GPG_TTY
 export EDITOR="code -w"
 export PGTZ=UTC
 
-# Tembo stuff.
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/.config/gcloud/application_default_credentials.json"
+# Don't share history across sessions (keep up arrow current session only).
+# https://superuser.com/a/1017151
+unsetopt share_history
 
 # Start the starship prompt.
 eval "$(starship init zsh)"
 
 # Start direnv.
 eval "$(direnv hook zsh)"
+
+# Start atuin.
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # less stuff.
 export PAGER=less
