@@ -109,6 +109,10 @@ export NVM_DIR="$HOME/.nvm"
 # shellcheck disable=SC1091
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# ClickHouse stuff.
+alias cg="~/dev/clickhouse/clickgres-platform/clickgresctl.sh"
+alias cgperms="~/dev/clickhouse/clickgres-platform/scripts/request_all_permissions.py --yes"
+
 # Handy aliases
 alias ts="date -u '+%Y-%m-%dT%H:%M:%SZ'"
 alias timestamp="ts | tr -d '\n' | pbcopy"
