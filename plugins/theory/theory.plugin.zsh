@@ -64,7 +64,7 @@ function pmv () { perl -M$1 -le "print $1->VERSION"; }
 function pmr () { perl -MModule::CoreList -le "print Module::CoreList->first_release(q{$1})"; }
 
 # Ruby stuff.
-[ -d "$HOME/.rbenv" ] && eval "$(rbenv init - --no-rehash zsh)"
+# [ -d "$HOME/.rbenv" ] && eval "$(rbenv init - --no-rehash zsh)"
 
 function cpanm () {
     # Point MakeMaker and Module:Build and Homewbrew include.
@@ -111,7 +111,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # ClickHouse stuff.
 alias cg="~/dev/clickhouse/clickgres-platform/clickgresctl.sh"
-alias cgperms="~/dev/clickhouse/clickgres-platform/scripts/request_all_permissions.py --yes"
+alias cgperms="cg perms on-call --wait"
 
 # Handy aliases
 alias ts="date -u '+%Y-%m-%dT%H:%M:%SZ'"
